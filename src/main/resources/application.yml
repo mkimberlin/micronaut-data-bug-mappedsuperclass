@@ -1,0 +1,21 @@
+---
+micronaut:
+  application:
+    name: demo
+
+---
+datasources:
+  default:
+    url: jdbc:h2:mem:devDb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: ''
+    schema-generate: CREATE_DROP
+    dialect: H2
+
+logging:
+  level:
+    root: INFO
+    cn.hillwind.wx: DEBUG
+    com.github.binarywang: DEBUG
+    io.micronaut.data.query: DEBUG
