@@ -45,8 +45,8 @@ dependencies {
     runtimeOnly "ch.qos.logback:logback-classic:1.2.3"
     runtimeOnly "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.8"
     runtime 'io.micronaut.configuration:micronaut-jdbc-hikari'
-//    runtime("com.h2database:h2")
-    runtime group: 'org.postgresql', name: 'postgresql', version: '42.2.9'
+    runtime("com.h2database:h2")
+//    runtime group: 'org.postgresql', name: 'postgresql', version: '42.2.9'
 
     testImplementation platform("io.micronaut:micronaut-bom:$micronautVersion")
     testImplementation "io.micronaut.test:micronaut-test-kotlintest"

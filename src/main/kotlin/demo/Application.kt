@@ -42,7 +42,21 @@ class StartupListener {
         responseKeyRepository.save(res)
 
         responseKeyRepository.findAll().forEach { res ->
-            println(res.responseKey.toString())
+            println(res.responseKey.toString() + ":" + res.isUsed)
+        }
+
+        res.isUsed = true
+        responseKeyRepository.update(res)
+
+        responseKeyRepository.findAll().forEach { res ->
+            println(res.responseKey.toString() + ":" + res.isUsed)
+        }
+
+        val entity = BookEntity("1", "TestName")
+        bookRepository.save(entity)
+
+        bookRepository.findAll().forEach { book ->
+            println("" + book.id + ":" + book.name)
         }
     }
 
@@ -51,5 +65,8 @@ class StartupListener {
 
     @Inject
     lateinit var responseKeyRepository: ResponseKeyRepository
+
+    @Inject
+    lateinit var bookRepository: BookRepository
 
 }

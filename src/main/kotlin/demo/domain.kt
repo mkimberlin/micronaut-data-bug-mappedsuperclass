@@ -3,6 +3,8 @@ package demo
 import io.micronaut.data.annotation.AutoPopulated
 import io.micronaut.data.annotation.DateCreated
 import io.micronaut.data.annotation.DateUpdated
+import io.micronaut.data.annotation.MappedEntity
+import io.micronaut.data.model.naming.NamingStrategies
 import java.time.LocalDateTime
 import java.util.*
 import javax.persistence.*
@@ -70,3 +72,10 @@ class ResponseKey {
         isUsed = used
     }
 }
+
+@MappedEntity(namingStrategy = NamingStrategies.Raw::class)
+@Table(name = "Book")
+data class BookEntity @JvmOverloads constructor(
+        @Id
+        var id: String? = null,
+        var name: String? = null)
