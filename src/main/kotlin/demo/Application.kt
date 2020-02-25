@@ -29,15 +29,6 @@ object Application {
 class StartupListener {
     @EventListener
     fun onStartupEvent(event: StartupEvent) {
-        val user = User().also {
-            it.name = "test"
-        }
-        userRepository.save(user)
-
-        userRepository.findAll().forEach { user ->
-            println(user.id.toString() + ":" + user.name)
-        }
-
         val res = ResponseKey()
         responseKeyRepository.save(res)
 
@@ -51,22 +42,9 @@ class StartupListener {
         responseKeyRepository.findAll().forEach { res ->
             println(res.responseKey.toString() + ":" + res.isUsed)
         }
-
-        val entity = BookEntity("1", "TestName")
-        bookRepository.save(entity)
-
-        bookRepository.findAll().forEach { book ->
-            println("" + book.id + ":" + book.name)
-        }
     }
-
-    @Inject
-    lateinit var userRepository: UserRepository
-
+    
     @Inject
     lateinit var responseKeyRepository: ResponseKeyRepository
-
-    @Inject
-    lateinit var bookRepository: BookRepository
 
 }
